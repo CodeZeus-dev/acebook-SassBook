@@ -10,8 +10,19 @@
           <h5 class="mb-1"><img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto"></h5><br>
           <p class="card-text"><%= @post.postBody %></p>
           <small class="text-muted"><%= @post.created_at.strftime("Post created at %H:%M on %B %d, %Y") %></small>
+          <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
           <br><br>
-          <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-secondary"%> <%= link_to 'Back', posts_path, :class => "btn btn-secondary" %>
+          <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+          <%= p pre_like %>
+          <% if pre_like %>
+            <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete, :class => "btn btn-secondary"%>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(@post), method: :post, :class => "btn btn-secondary"%>
+          <% end %>
+          <%= link_to 'Back', posts_path, :class => "btn btn-secondary" %>
+          <% if current_user && (@post.user_id == current_user.id) %>
+          <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-secondary"%> 
+          <% end %>
         </div>
       </div>
     </div>
