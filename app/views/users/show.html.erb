@@ -1,7 +1,7 @@
 <h1>
   <%= @user.name%>
 </h1>
-  <small class="text-muted">(Number goes here) mutual friends</small>
+  <small class="text-muted"><%= count_mutual_friends(@user) %> mutual friends</small>
   <br>
 
 

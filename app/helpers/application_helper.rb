@@ -38,9 +38,13 @@ module ApplicationHelper
       end
 
       def count_mutual_friends(user)
-        #get array of current_user friends 
+        #get array of current_user friends
+        current_user_friends = current_user.friends.all.to_a.map { |friend| friend.name }
         #get array of user_id friends
+        user_friends = user.friends.all.to_a.map { |friend| friend.name }
         #return number of users that are in both arrays
+        intersection = current_user_friends & user_friends
+        intersection.size
       end
     
 end
