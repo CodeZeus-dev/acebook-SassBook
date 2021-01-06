@@ -22,4 +22,19 @@
   </a>
   <% end %>
 </div>
-  
+
+
+  <div class="card my-5 py-3 bg-light shadow">
+      <h2 class="center pb-3 text-dark border-bottom text-center"><%= @user.name %>'s BragFriends</h2> 
+      <% @user.friends.each do |f|%> <!-- Shows all users that have accepted current user's friend request and have become friends  -->
+        <div class="d-flex align-items-center mb-2 border-bottom py-2">
+          <div class="col-6 p-0 pl-5 text-capitalize text-center">
+              <%= f.name %>
+          </div>
+          <div class="col-5 p-0 text-center">   
+            <%= link_to 'Go To Profile', user_path(f), :class => "btn btn-friend shadow"%>
+            
+          </div>
+        </div>
+      <% end %>
+  </div>
