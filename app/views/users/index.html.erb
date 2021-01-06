@@ -42,7 +42,7 @@
 
 <% unless @friend_requests.empty? %>
   <div class="card my-5 py-3 bg-light shadow">
-      <h2 class="center pb-3 text-dark border-bottom">Pending Friend Requests</h2> 
+      <h2 class="center pb-3 text-dark text-center border-bottom">Pending Friend Requests</h2> 
       <% @friend_requests.each do |user|%> <!-- Shows all users friend requests has been sent to -->
         <div class="d-flex align-items-center mb-2 border-bottom py-2">
           <div class="col-6 p-0 pl-5 text-capitalize text-center"> 
@@ -51,17 +51,11 @@
             <% end %>
           </div>
           <div class="col-auto p-0">
-            <button class= "btn btn-pending shadow" data-toggle="modal" data-target="#decisionModal">
-                <i class="fas fa-envelope"></i> Pending Friend Request... 
-            </button>
+            <%= link_to "Accept", accept_friend_user_friendships_path(user), :class => "btn btn-outline-success text-black font-weight-bold" %>
+            <%= link_to 'Decline', decline_friend_user_friendships_path(user), :class => "btn btn-outline-danger text-black font-weight-bold" %>
           </div>
         </div>
-        <%= link_to accept_friend_user_friendships_path(user) do %>
-          <button type="button" class="btn btn-accept text-black font-weight-bold"> <i class="fas fa-user-check"></i> Accept</button>
-        <% end %>
-        <%= link_to decline_friend_user_friendships_path(user) do %>
-          <button type="button" class="btn btn-decline text-black font-weight-bold"><i class="fas fa-user-times"></i> Decline</button>
-        <% end %>
+        
         <br><br>
       <% end %>
   </div>
