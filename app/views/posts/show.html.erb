@@ -11,9 +11,8 @@
           <p class="card-text"><%= @post.postBody %></p>
           <small class="text-muted"><%= @post.created_at.strftime("Post created at %H:%M on %B %d, %Y") %></small>
           <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-          <br><br>
+          <br>
           <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-          <%= p pre_like %>
           <% if pre_like %>
             <%= button_to '👎', post_like_path(@post, pre_like), method: :delete, :class => "btn btn-secondary"%>
           <% else %>
