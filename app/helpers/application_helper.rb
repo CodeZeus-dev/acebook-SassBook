@@ -7,6 +7,10 @@ module ApplicationHelper
         notice
     end
 
+    def notification_seen
+      current_user.notice_seen
+    end
+
     # Receives the notification object as parameter along with a type
     # and returns a User record, Post record or a Comment record
     # depending on the type supplied 

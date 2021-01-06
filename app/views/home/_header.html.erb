@@ -17,9 +17,23 @@
               <%= link_to 'Posts', root_path, class:'nav-link'%>
           </li>
           <li class="nav-item">
-              <%= link_to 'Friends', root_path, class:'nav-link'%>
+              <%= link_to 'Friends', users_path, class:'nav-link'%>
           </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= button_to saw_notice_path, :class => "text-white btn notice-btn-#{notification_seen}",
+             data: {toggle: 'modal', target: '#noticeModal'}, method: :get, remote: true do %>
+             <% if notification_seen %>
+              <i class="fas fa-bell-slash"></i>
+             <% else %>
+              <i class="fas fa-bell"></i>
+             <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
         <form>
            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"btn btn-secondary"%>
         </form>
@@ -28,7 +42,9 @@
     </div>
   </nav>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.pending_requests == 0 %>
   <%= render 'shared/notifications', object: current_user.notifications %>
+<% else %>
+  <br>
 <% end %>
 

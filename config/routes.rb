@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   end
   # get 'home/index'
   root 'home#index'
-
+  get '/saw_notification', to: 'users#saw_notification', as: 'saw_notice'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

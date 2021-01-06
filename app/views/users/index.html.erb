@@ -1,4 +1,4 @@
-<h2 class="center"> Who do you want To <span class="font-courgette size-80">Spy</span> On? </h2>
+<h2 class="center"> Who do you want to <span class="font-courgette size-80">Brag</span> to? </h2>
 <br>
 
 <div class="container col-md-8">
@@ -10,7 +10,7 @@
         <div class="d-flex align-items-center mb-2 border-bottom py-2">
           <div class="col-auto p-0 pl-5 text-capitalize">
             <%= link_to user_path(f) do %>
-              <%= f.full_name %>
+              <%= f.name %>
             <% end %>
           </div>
           <div class="col-auto p-0 px-1">|</div>
@@ -29,7 +29,7 @@
         <div class="d-flex align-items-center mb-2 border-bottom py-2">
           <div class="col-auto p-0 pl-5 text-capitalize"> 
             <%= link_to user_path(user) do %>
-              <%= user.full_name %>
+              <%= user.name %>
             <% end %>
           </div>
           <div class="col-auto p-0 px-1">|</div>
@@ -51,7 +51,7 @@
         <div class="d-flex align-items-center mb-2 border-bottom py-2">
           <div class="col-auto p-0 pl-5 text-capitalize"> 
             <%= link_to user_path(user) do %>
-            <%= user.full_name %>
+            <%= user.name %>
             <% end %>
           </div>
           <div class="col-auto p-0 px-1">|</div>
@@ -61,7 +61,12 @@
             </button>
           </div>
         </div>
-          <%= render 'friendships/decisionModal', object: user %>
+        <%= link_to accept_friend_user_friendships_path(user) do %>
+          <button type="button" class="btn btn-accept text-black font-weight-bold"> <i class="fas fa-user-check"></i> Accept</button>
+        <% end %>
+        <%= link_to decline_friend_user_friendships_path(user) do %>
+          <button type="button" class="btn btn-decline text-black font-weight-bold"><i class="fas fa-user-times"></i> Decline</button>
+        <% end %>
         <br><br>
       <% end %>
   </div>
@@ -81,7 +86,7 @@
             </div>
             <div class="col-auto p-0 px-1">|</div>
             <div class="col-auto p-0">
-              <%= link_to user_friendships_path(user), method: :post do %>
+              <%= button_to user_friendships_path(user), method: :post do %>
                 <button class= "btn btn-user shadow"> <i class="fas fa-share-square"></i> Send Friend Request? </button>
               <% end %>
             </div>
