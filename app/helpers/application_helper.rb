@@ -36,5 +36,11 @@ module ApplicationHelper
         return true if request_sent == request_received && request_sent == true    
         return false if request_sent == request_received && request_sent == false
       end
+
+      def count_mutual_friends(user)
+        #get array of current_user friends 
+        #get array of user_id friends
+        #return number of users that are in both arrays
+      end
     
 end

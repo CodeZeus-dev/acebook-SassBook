@@ -1,7 +1,8 @@
 <h1>
   <%= @user.name%>
-  <br>
 </h1>
+  <small class="text-muted">(Number goes here) mutual friends</small>
+  <br>
 
 
 
@@ -23,9 +24,10 @@
   <% end %>
 </div>
 
+<h2 class="center mt-5 font-weight-bold border-top pt-5 "><%= @user.name %>'s BragFriends</h2>
 
   <div class="card my-5 py-3 bg-light shadow">
-      <h2 class="center pb-3 text-dark border-bottom text-center"><%= @user.name %>'s BragFriends</h2> 
+
       <% @user.friends.each do |f|%> <!-- Shows all users that have accepted current user's friend request and have become friends  -->
         <div class="d-flex align-items-center mb-2 border-bottom py-2">
           <div class="col-6 p-0 pl-5 text-capitalize text-center">
