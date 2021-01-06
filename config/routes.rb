@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  # get 'users/index'
 
-  get 'users/show'
+  # get 'users/show'
 
-  get 'friendships/create'
+  # get 'friendships/create'
 
   resources :posts do
     resources :likes
@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :users, only: %i[index show] do
-    resources :friendships, only: %i[create]
+    resources :friendships, only: %i[create] do
+      collection do
+        get 'accept_friend'
+        get 'decline_friend'
+      end
+    end
   end
   # get 'home/index'
   root 'home#index'
