@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210106101137) do
+ActiveRecord::Schema.define(version: 20210106124004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "sent_to_id", null: false
+    t.bigint "sent_by_id", null: false
+    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sent_by_id"], name: "index_friendships_on_sent_by_id"
+    t.index ["sent_to_id"], name: "index_friendships_on_sent_to_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.uuid "post_id"
@@ -43,5 +53,7 @@ ActiveRecord::Schema.define(version: 20210106101137) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friendships", "users", column: "sent_by_id"
+  add_foreign_key "friendships", "users", column: "sent_to_id"
   add_foreign_key "likes", "users"
 end
