@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
+
   resources :posts do
     resources :likes
   end
