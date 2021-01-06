@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  resources :users, only: %i[index show] do
+    resources :friendships, only: %i[create]
+  end
   # get 'home/index'
   root 'home#index'
 
