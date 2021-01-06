@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210106124004) do
+ActiveRecord::Schema.define(version: 20210106130652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20210106124004) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "notice_id"
+    t.string "notice_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "postBody"
     t.datetime "created_at", null: false
@@ -56,4 +65,5 @@ ActiveRecord::Schema.define(version: 20210106124004) do
   add_foreign_key "friendships", "users", column: "sent_by_id"
   add_foreign_key "friendships", "users", column: "sent_to_id"
   add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "users"
 end
