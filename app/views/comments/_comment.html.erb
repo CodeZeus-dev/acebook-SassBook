@@ -1,0 +1,15 @@
+<%object.comments.each do |c|%>
+    <div class="card border-dark mb-3" style="max-width: 35rem;">
+        <div class="card-header"><%= link_to user_path(c.user), class: "font-raleway" do%>
+                <%= c.user.name %>
+              <%end%></div>
+        <div class="card-body">
+            <p class="card-text"> <%= c.content %>
+            <p><span class="small text-muted" style="font-size: 12px">Posted <%= distance_of_time_in_words(c.created_at, Time.now) %> ago</span></p>
+            <% if current_user.id == c.user_id%>
+              <%= button_to '🗑️', comment_path(c) , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-outline-secondary"%>
+            <% end %></p>
+        </div>
+    </div>
+    <%end%> 
+

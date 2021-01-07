@@ -3,7 +3,7 @@
 -->
 
 <p>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
@@ -28,4 +28,27 @@
   </div>
 </p>
 
+<div class="row justify-content-center">
+<div class="col-sm-6">
+<div class="card card-accent-dark mb-3 mx-auto" >
+  <div class="card-header">Bragments Section</div>
+  <div class="card-body text-secondary">
+  <div class="col col-lg-9">
+      <div class=""><%= render 'comments/comment', object: @post %></div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <%= render 'comments/form', object: @post %>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row justify-content-md-center">
+
+  </div>
+</div>
+</div>
+</div>

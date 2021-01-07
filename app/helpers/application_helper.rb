@@ -16,6 +16,11 @@ module ApplicationHelper
     # depending on the type supplied 
     def notification_find(notice, type)
         return User.find(notice.notice_id) if type == 'friendRequest'
+        return Post.find(notice.notice_id) if type == 'comment'
+        return Post.find(notice.notice_id) if type == 'like-post'
+        return unless type == 'like-comment'
+        comment = Comment.find(notice.notice_id)
+        Post.find(comment.post_id)
     end
 
     def friend_request_sent?(user)
@@ -47,4 +52,10 @@ module ApplicationHelper
         intersection.size
       end
     
+      def liked?(subject, type)
+        result = false
+        result = Like.where(user_id: current_user.id, post_id: subject.id).exists? if type == "post"
+        result = Like.where(user_id: current_user.id, comment_id: subject.id).exists? if type == "comment"
+        result
+      end
 end

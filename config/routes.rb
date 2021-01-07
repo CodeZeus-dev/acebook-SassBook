@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  # get 'users/index'
-
-  # get 'users/show'
-
-  # get 'friendships/create'
-
   resources :posts do
     resources :likes
   end
+
+  resources :comments, only: %i[new create destroy] do 
+    resources :likes
+  end
+
   devise_for :users, :controllers => {
     registrations: 'registrations'
   }
