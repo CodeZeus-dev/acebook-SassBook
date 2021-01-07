@@ -1,0 +1,42 @@
+<h1>
+  <%= @user.name%>
+</h1>
+  <small class="text-muted"><%= count_mutual_friends(@user) %> mutual friends</small>
+  <br>
+
+
+
+<h2 class="center mt-5 font-weight-bold border-top pt-5 ">Posts</h2>
+
+<div class="list-group">
+  <% @user.posts.each do |post| %>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto"></h5>
+      <div class="btn-toolbar">
+        <%= button_to 'Show', post_path(post), :class => "btn btn-secondary", :method => :get %>
+      </div>
+    </div>
+    <p class="mb-1" id="look-here"><%= simple_format(post.postBody) %></p>
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <small class="text-muted"><%= post.created_at.strftime("Post created at %H:%M on %B %d, %Y") %> by <%= post.user.name if post.user %></small>
+  </a>
+  <% end %>
+</div>
+
+<h2 class="center mt-5 font-weight-bold border-top pt-5 "><%= @user.name %>'s BragFriends</h2>
+
+  <div class="card my-5 py-3 bg-light shadow">
+
+      <% @user.friends.each do |f|%> <!-- Shows all users that have accepted current user's friend request and have become friends  -->
+        <div class="d-flex align-items-center mb-2 border-bottom py-2">
+          <div class="col-6 p-0 pl-5 text-capitalize text-center">
+              <%= f.name %>
+          </div>
+          <div class="col-5 p-0 text-center">   
+            <%= link_to 'Go To Profile', user_path(f), :class => "btn btn-friend shadow"%>
+            
+          </div>
+        </div>
+      <% end %>
+  </div>

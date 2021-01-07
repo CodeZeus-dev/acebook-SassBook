@@ -1,0 +1,6 @@
+<% object.each do |n| %>
+    <% if n.notice_type == "friendRequest" %>
+        <% user = notification_find(n, 'friendRequest') %>
+        <% flash[:alert] = "Friend Request sent from #{user.name}" %>
+    <% end %>
+<% end %>

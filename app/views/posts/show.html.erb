@@ -11,16 +11,16 @@
           <p class="card-text"><%= @post.postBody %></p>
           <small class="text-muted"><%= @post.created_at.strftime("Post created at %H:%M on %B %d, %Y") %></small>
           <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-          <br>
           <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
           <% if pre_like %>
-            <%= button_to '👎', post_like_path(@post, pre_like), method: :delete, :class => "btn btn-secondary"%>
+            <%= button_to '💔', post_like_path(@post, pre_like), method: :delete, :class => "btn btn-outline-secondary"%>
           <% else %>
-            <%= button_to '👍', post_likes_path(@post), method: :post, :class => "btn btn-secondary"%>
+            <%= button_to '❤️', post_likes_path(@post), method: :post, :class => "btn btn-outline-secondary"%>
           <% end %>
-          <%= link_to 'Back', posts_path, :class => "btn btn-secondary" %>
+          <br>
+          <%= link_to '🔙', posts_path, :class => "btn btn-outline-secondary" %>
           <% if current_user && (@post.user_id == current_user.id) %>
-          <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-secondary"%> 
+          <%= link_to '🖋️', edit_post_path(@post), :class => "btn btn-outline-secondary"%> 
           <% end %>
         </div>
       </div>
