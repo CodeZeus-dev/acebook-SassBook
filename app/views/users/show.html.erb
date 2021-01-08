@@ -1,8 +1,18 @@
 <h1>
   <%= @user.name%>
 </h1>
+<div class="field">
+  <% if @user.avatar.attached? %>
+    <image src="<%=(url_for(@user.avatar))%>" width="180" >
+  <%end%>
+</div>
+<br>
+<% if @user.id != current_user.id %>
   <small class="text-muted"><%= count_mutual_friends(@user) %> mutual friends</small>
-  <br>
+  <% else %>
+    <%= button_to 'Edit Profile', edit_user_registration_path, :class => "btn btn-secondary", :method => :get %>
+<% end %>
+<br>
 
 
 
