@@ -18,7 +18,14 @@
   <% @posts.each do |post| %>
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto"></h5>
+      <h5 class="mb-1">
+      <% @usericious = User.find(post.user_id) %>
+        <% if @usericious.avatar.attached? %>
+          <image src="<%=(url_for(@usericious.avatar))%>" width="50" >
+        <% else %>
+          <img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto">
+        <% end %>
+      </h5>
       <div class="btn-toolbar">
         <%= button_to '👀', post_path(post), :class => "btn btn-outline-secondary", :method => :get %>
         <% if current_user && (post.user_id == current_user.id) %>

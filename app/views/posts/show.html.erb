@@ -7,8 +7,15 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="mb-1"><img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto"></h5><br>
-          <p class="card-text"><%= @post.postBody %></p>
+        <h5 class="mb-1">
+          <% @usericious = User.find(@post.user_id) %>
+            <% if @usericious.avatar.attached? %>
+              <image src="<%=(url_for(@usericious.avatar))%>" width="50" >
+            <% else %>
+              <img src="https://user-images.githubusercontent.com/65397514/102521890-27b33b00-409e-11eb-9024-9e06d655f1c0.png" width="50px" height="auto">
+            <% end %>
+        </h5>          
+        <p class="card-text"><%= @post.postBody %></p>
           <small class="text-muted"><%= @post.created_at.strftime("Post created at %H:%M on %B %d, %Y") %></small>
           <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
           <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>

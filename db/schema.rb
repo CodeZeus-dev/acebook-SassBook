@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210107193717) do
-
+ActiveRecord::Schema.define(version: 2021_01_07_193717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -99,9 +98,8 @@ ActiveRecord::Schema.define(version: 20210107193717) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-
+  add_foreign_key "comments", "users"
   add_foreign_key "friendships", "users", column: "sent_by_id"
   add_foreign_key "friendships", "users", column: "sent_to_id"
   add_foreign_key "likes", "comments"

@@ -1,4 +1,11 @@
-<%= form_with(model: post, local: true) do |form| %>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+        <h5 class="mb-1">
+        <h1>Wanna change your words?</h1>
+          <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,14 +17,20 @@
       </ul>
     </div>
   <% end %>
-
+  <br>
   <div class="field">
-    <%= form.label :postBody %>
-    <%= form.text_field :postBody, id: :post_postBody %>
+  <div class="form-group">
+    <%= form.label :postBody, :class => "exampleFormControlInput1"%>
+    <%= form.text_field :postBody, id: :post_postBody, :class => "form-control" %>
+  </div>
   </div>
   <br>
   <div class="actions">
     <%= form.submit('Update', class:'btn btn-secondary') %>
-    <%= link_to 'Back', posts_path, :class => "btn btn-secondary" %>
+    <%= link_to '🔙', posts_path, :class => "btn btn-outline-secondary" %>
   </div>
 <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
