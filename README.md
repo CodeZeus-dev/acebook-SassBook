@@ -95,8 +95,8 @@ I can like their posts and other comments
 - ✅ CRUD posts
 - ✅ Search toolbar
 - ✅ Adding Braggers
-- ✅ Viewing Braggers Profiles
-- ✅ Commenting Function
+- ✅ Viewing other Braggers Profiles
+- ✅ Commenting on Posts
 - ✅ Display pictures
-- ✅ Liking posts
+- ✅ Liking posts && comments
 - ❌ Instant Messaging
