@@ -1,7 +1,16 @@
 # <u>BragBook</u>
 
 ## <u>About</u>
-BragBook is a site that allows people to connect with friends and share what is going on in their lives. Users can do this through creating posts, uploading a profile picture and adding multiple friends. BragBook also allows users to comment on their friend's post and respond via likes and various emojis.
+BragBook is a site that allows people to connect with friends and share what is going on in their lives. Users can do this through creating posts, uploading a profile picture and adding multiple friends. BragBook also allows users to comment on their friend's post and respond via likes and various emojis. The web app is made using the following tech stack: Ruby, Rails, RSpec + Capybara, HTML, CSS (w/ bootstrap), JS. The app was deployed to [Heroku](https://bragbook.herokuapp.com) via Travis CI.
+
+## Project Contributors
+
+![artwork](/app/assets/images/artwork.png)
+
+| [Mel TheCommitPolice](https://github.com/TamMelPer) |
+[Symion OopsWendyDidItAgain](https://github.com/sedwards93) |
+[Constantine WishWeHadDoneThisInC#](https://github.com/CodeZeus-dev) |
+[Michael GMT+8](https://github.com/Michaelschats) |
 
 ## View project on Heroku:
 [BragBook](https://bragbook.herokuapp.com)
