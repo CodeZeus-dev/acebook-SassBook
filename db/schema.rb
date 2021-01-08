@@ -41,10 +41,8 @@ ActiveRecord::Schema.define(version: 20210107193717) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "comments_id"
     t.bigint "comment_id"
     t.index ["comment_id"], name: "index_likes_on_comment_id"
-    t.index ["comments_id"], name: "index_likes_on_comments_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -83,7 +81,6 @@ ActiveRecord::Schema.define(version: 20210107193717) do
   add_foreign_key "friendships", "users", column: "sent_by_id"
   add_foreign_key "friendships", "users", column: "sent_to_id"
   add_foreign_key "likes", "comments"
-  add_foreign_key "likes", "comments", column: "comments_id"
   add_foreign_key "likes", "users"
   add_foreign_key "notifications", "users"
 end
