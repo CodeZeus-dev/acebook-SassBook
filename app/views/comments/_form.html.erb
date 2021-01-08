@@ -1,0 +1,18 @@
+
+<div class="card bg-light mb-3" style="max-width: 35rem;">
+        <div class="card-header">New Bragment</div>
+        <div class="card-body">
+            <%= form_for @comment = Comment.new do |f| %>
+    <%= render "devise/shared/error_messages", resource: @comment %>
+    <%= f.hidden_field :post_id, :value => object.id %>
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control col-sm-12", placeholder: "Type your comment..." %>
+    </div>
+    <br>
+    <div>
+      <%= f.submit 'Comment', class:"btn bg-secondary m-0"%>
+    </div>
+<% end %>
+
+        </div>
+    </div>

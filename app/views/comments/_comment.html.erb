@@ -1,0 +1,38 @@
+<%object.comments.each do |c|%>
+    <% if current_user.id == c.user_id %>
+        <div class="card bg-light mb-3" style="max-width: 35rem;">
+        <div class="card-header"><%= link_to user_path(c.user), class: "font-raleway" do%>
+                <%= c.user.name %>
+              <%end%></div>
+        <div class="card-body">
+            <p class="card-text"> <%= c.content %>
+            <p><span class="small text-muted" style="font-size: 12px">Posted <%= distance_of_time_in_words(c.created_at, Time.now) %> ago</span></p>
+            <% if current_user.id == c.user_id%>
+              <%= button_to '🗑️', comment_path(c) , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-outline-secondary"%>
+            <% end %></p>
+        </div>
+    </div>
+    <% else %>
+    <div class="card bg-light mb-3" style="max-width: 35rem;">
+        <div class="card-header"><%= link_to user_path(c.user), class: "font-raleway" do%>
+                <%= c.user.name %>
+              <%end%></div>
+        <div class="card-body">
+            <p class="card-text"> <%= c.content %>
+            <p><span class="small text-muted" style="font-size: 12px">Posted <%= distance_of_time_in_words(c.created_at, Time.now) %> ago</span></p>
+            <% if current_user.id == c.user_id%>
+              <%= button_to '🗑️', comment_path(c) , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-outline-secondary"%>
+            <% end %>
+            <p><%= c.likes.count %> <%= (c.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            <% pre_like = c.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to '💔', comment_like_path( c, pre_like), method: :delete, :class => "btn btn-outline-secondary"%>
+          <% else %>
+            <%= button_to '❤️', comment_likes_path(c), method: :post, :class => "btn btn-outline-secondary"%>
+          <% end %>
+            </p>
+        </div>
+    </div>
+    <% end %>
+    <%end%> 
+
