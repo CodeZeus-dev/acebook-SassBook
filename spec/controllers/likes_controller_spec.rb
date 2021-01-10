@@ -4,21 +4,41 @@ RSpec.describe LikesController, type: :controller do
 
     login_user
 
-    let(:valid_attributes) {
+    before(:each) do
+        @user_attr = FactoryBot.build(:user).attributes
+        @post_attr = FactoryBot.build(:post).attributes
+        @post = Post.create! @post_attr
+        @post.save!
+        @comment_attr = FactoryBot.build(:comment).attributes
+        @comment = Comment.create! @comment_attr
+        @comment.save!
+    end
+
+    let(:valid_attributes_post) {
         { 
-            :postBody => "Post Body",
-            :user_id => 1
+            :post_id => @post.id
         }   
     }
 
-    before(:each) do
-        @post_attributes = FactoryBot.attributes_for(:post, :user_id => @user)
-    end
+    let(:valid_attributes_comment) {
+        {
+            :comment_id => @comment.id
+        }
+    }
+
+    let(:valid_session) { {} }
 
     describe 'POST #create' do
         it "POSTs a new like to a post" do
-            post :create, params: { user_id: @user.id, post_id: @post_attributes.id }
-            expect { response }.to change(Like, :count).by(1)
+            expect {
+                post :create, params: {post_id: @post.id, like: valid_attributes_post}, session: valid_session
+              }.to change(Like, :count).by(1)
+        end 
+
+        it "POSTs a new like to a comment" do
+            expect {
+                post :create, params: {comment_id: @comment.id, like: valid_attributes_comment}, session: valid_session
+            }.to change(Like, :count).by(1)
         end 
     end
 end

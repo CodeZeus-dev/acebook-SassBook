@@ -48,19 +48,4 @@ class LikesController < ApplicationController
 
     [type, subject]
   end
-
-  # Returns whether a post or comment has already been liked by the current_user signed in
-  # def already_liked?(type)
-  #   result = false
-  #   if type == 'post'
-  #     result = Like.where(user_id: current_user.id, post_id:
-  #     params[:post_id]).exists?
-  #   end
-  #   if type == 'comment'
-  #     result = Like.where(user_id: current_user.id, comment_id:
-  #     params[:comment_id]).exists?
-  #   end
-
-  #   result
-  # end
 end

@@ -7,11 +7,17 @@ FactoryBot.define do
     # Add additional fields as required via your User model
   end
 
-  # Not used in this tutorial, but left to show an example of different user types
-  # factory :admin do
-  #   id {2}
-  #   email {"test@admin.com"}
-  #   password {"qwerty"}
-  #   admin {true}
-  # end
+  factory :post do
+    id {"5e102573-a99c-4ffa-a151-11877a75ed1b"}
+    postBody {"Hello Wendy!"}
+    user_id {1}
+  end
+
+  factory :comment do
+    id {1}
+    content {"Hi I'm Symion and my names mean horsemonkey <3"}
+    post_id {"5e102573-a99c-4ffa-a151-11877a75ed1b"}
+    user_id {1}
+  end
+  
 end
