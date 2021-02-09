@@ -6,12 +6,12 @@ RSpec.describe FriendshipsController, type: :controller do
     @user = FactoryBot.create(:user)
   end
 
-  describe "GET #accept_friend" do
-    it "renders the accept_friend page" do
-      get :accept_friend, params: { user_id: @user.id }
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET #accept_friend" do
+  #   it "renders the accept_friend page" do
+  #     get :accept_friend, params: { user_id: @user.id }
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   # describe "POST #create" do
   #   it "creates a new friendship" do

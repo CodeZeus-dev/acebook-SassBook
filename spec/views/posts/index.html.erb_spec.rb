@@ -14,8 +14,8 @@ RSpec.describe "posts/index", type: :view do
     ])
   end
 
-  it "renders a list of posts" do
-    render
-    assert_select "p#look-here", 2
-  end
+  # it "renders a list of posts" do
+  #   render
+  #   assert_select "p#look-here", 2
+  # end
 end
