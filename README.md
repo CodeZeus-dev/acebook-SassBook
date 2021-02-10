@@ -15,6 +15,8 @@ BragBook is a social media web application that allows users to connect with fri
 | CI/CD                 | Travis                     |
 | Hosting               | Heroku                     |
 
+## Demo
+<img src="./app/assets/images/bragbookdemo.gif" alt="Demo GIF" width="600" height="auto">
 
 ## Quickstart
 First, clone the repository and follow the steps below:
